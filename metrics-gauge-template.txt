@@ -1,0 +1,153 @@
+PUT /_template/metrics-gauge-template HTTP/1.1
+Host: localhost:9200
+Conte: application/json
+Cache-Control: no-cache
+Postman-Token: e7625813-56b9-a06c-1e3b-f4a5f3392bab
+
+{
+  "template": "metrics-gauge-*",
+    "mappings": {
+      "metrics": {
+        "properties": {
+          "@timestamp": {
+            "type": "date"
+          },
+          "@version": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "gauge_value": {
+            "type": "float"
+          },
+          "Type": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "items": {
+            "properties": {
+              "AppName": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                },
+                "fielddata": true
+              },
+              "Name": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "ServerName": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "Tags": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "Timestamp": {
+                "type": "date"
+              },
+              "Type": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "Unit": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "Value": {
+                "type": "float"
+              }
+            }
+          },
+          "properties": {
+            "properties": {
+              "items": {
+                "properties": {
+                  "AppName": {
+                    "properties": {
+                      "fielddata": {
+                        "type": "boolean"
+                      },
+                      "type": {
+                        "type": "text",
+                        "fields": {
+                          "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "my_field": {
+                "properties": {
+                  "fielddata": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "type": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          }
+        }
+      }
+    }
+}
